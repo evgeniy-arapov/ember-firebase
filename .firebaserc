@@ -1,0 +1,5 @@
+{
+  "projects": {
+    "ember-firebase": "ember-test-task"
+  }
+}

@@ -1,0 +1,33 @@
+{{!--{{outlet}}--}}
+
+<nav class="navbar navbar-light bg-light">
+  <div class="container">
+    {{#bs-form formLayout="vertical" model=this as |form|}}
+      <div class="form-row">
+        <div class="col-8">
+          {{form.element controlType="text"
+                         placeholder="Search"
+                         property="filter"
+                         required=false}}
+        </div>
+        <div class="col-4">
+          {{bs-button defaultText="Create"
+                      type="primary"
+                      buttonType="button"
+                      onClick=(action "createProduct")
+                      class="float-right"}}
+        </div>
+      </div>
+    {{/bs-form}}
+  </div>
+</nav>
+
+<div class="container">
+  {{products-list products=filteredProducts
+                  showProduct=(action "showProduct")}}
+  {{product-modal product=currentProduct
+                  inProgress=inProgress
+                  onSubmit=(route-action "saveProduct")
+                  onCancel=(action "closeModal")
+                  onDelete=(route-action "deleteProduct")}}
+</div>

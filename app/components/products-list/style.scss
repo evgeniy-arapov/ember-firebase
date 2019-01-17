@@ -1,0 +1,10 @@
+.products-list {
+  padding-top: 10px;
+  .product {
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid grey;
+    border-radius: 3px;
+  }
+}

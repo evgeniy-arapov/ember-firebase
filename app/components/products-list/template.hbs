@@ -1,0 +1,13 @@
+{{#each products as |product|}}
+  <div class="product" onclick={{action showProduct product}}>
+    <div class="row">
+      <div class="col-4">
+        <img class="photo" src={{product.photo}} alt="...">
+      </div>
+      <div class="col-8">
+        <h5  class="title">{{product.title}}</h5>
+        <div class="description">{{product.description}}</div>
+      </div>
+    </div>
+  </div>
+{{/each}}

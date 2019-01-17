@@ -1,0 +1,35 @@
+{{#bs-modal open=isModalOpen onSubmit=(action onSubmit product) onHidden=(action onCancel) as |modal|}}
+  {{#bs-form formLayout="vertical" model=product as |form|}}
+    {{#modal.header}}
+      <h4 class="modal-title">
+        {{form.element controlType="text" placeholder="Title" property="title" required=true}}
+      </h4>
+    {{/modal.header}}
+    {{#modal.body}}
+      {{#if product.newPhoto}}
+        <img src={{product.newPhoto}} alt="...">
+        <br><br>
+      {{else if product.photo}}
+        <img src={{product.photo}} alt="...">
+        <br><br>
+      {{/if}}
+
+      <input class="" id="updateLogo"
+             type="file" accept="image/png,image/jpeg"
+             onchange={{action "showImage" value="target.files"}}>
+      <br><br>
+
+      {{form.element controlType="textarea" property="description"}}
+    {{/modal.body}}
+    {{#if inProgress}}
+      <div class="col-12">
+        <p class="text-right">Please wait. Request processing.</p>
+      </div>
+    {{/if}}
+    {{#modal.footer}}
+      {{#bs-button onClick=(action modal.close) disabled=inProgress}}Cancel{{/bs-button}}
+      {{#bs-button type="danger" onClick=(action onDelete product) disabled=inProgress}}Delete{{/bs-button}}
+      {{#bs-button type="success" onClick=(action modal.submit) disabled=inProgress}}Save{{/bs-button}}
+    {{/modal.footer}}
+  {{/bs-form}}
+{{/bs-modal}}
